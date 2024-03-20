@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>残り時間表示</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="countdown">
+  <span id="days"></span>日
+  <span id="hours"></span>時間
+  <span id="minutes"></span>分
+  <span id="seconds"></span>秒
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 76px;
+}
+
+.countdown {
+  display: inline-block;
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+</style>
+
+<script>
+const countdownElement = document.querySelector('.countdown');
+
+function updateCountdown() {
+  const deadline = new Date('2024-04-01T17:00:00').getTime();
+  const now = new Date().getTime();
+  let difference = deadline - now;
+
+  if (difference <= 0) {
+    countdownElement.innerHTML = '時間切れにゃ！';
+    clearInterval(interval);
+    return;
+  }
+
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  difference -= days * (1000 * 60 * 60 * 24);
+
+  const hours = Math.floor(difference / (1000 * 60 * 60));
+  difference -= hours * (1000 * 60 * 60);
+
+  const minutes = Math.floor(difference / (1000 * 60));
+  difference -= minutes * (1000 * 60);
+
+  const seconds = Math.floor(difference / 1000);
+  difference -= seconds * 1000;
+
+  const milliseconds = difference;
+
+  countdownElement.innerHTML = `残り${days}日${hours}時間${minutes}分${seconds}.${milliseconds}秒`;
+}
+
+updateCountdown();
+const interval = setInterval(updateCountdown, 1); // 1ミリ秒ごとに更新
+
+</script>
