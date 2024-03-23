@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>残り時間表示</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>残り時間表示</title>
 </head>
 <body>
-<div class="countdown">
-  <span id="days"></span>日
-  <span id="hours"></span>時間
-  <span id="minutes"></span>分
-  <span id="seconds"></span>秒
-</div>
-<script src="script.js"></script>
+    <div class="countdown">
+        <span id="days"></span>日
+        <span id="hours"></span>時間
+        <span id="minutes"></span>分
+        <span id="seconds"></span>秒
+    </div>
 </body>
 </html>
 
 <style>
+:root {
+  --main-text: #333;
+  --main-bg: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-text: #ddd;
+    --main-bg: #181818;
+  }
+}
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin-top: 100px;
   font-size: 76px;
+  color: var(--main-text);
+  background-color: var(--main-bg);
 }
 
 .countdown {
   display: inline-block;
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
   padding: 10px 20px;
   border-radius: 5px;
 }
